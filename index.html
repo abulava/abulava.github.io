@@ -8,7 +8,32 @@
 <link rel="stylesheet" href="https://dl.dropboxusercontent.com/u/1075371/arcade2/stackedit.css" />
 <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
-<body><div class="container"><h1 id="awesome-software-development">Awesome Software Development</h1>
+<body><div class="container"><p><div class="toc">
+<ul>
+<li><a href="#awesome-software-development">Awesome Software Development</a><ul>
+<li><a href="#rails-42-puma-ipv6-enabled-os-feel-the-pain">Rails 4.2 + Puma + IPv6 enabled OS = feel the pain</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</p>
 
-<p><a href="https://www.bloc.io/ruby-warrior#/">Ruby Warrior - Learn Ruby Programming with Bloc</a></p></div></body>
+<h1 id="awesome-software-development">Awesome Software Development</h1>
+
+<p><a href="https://www.bloc.io/ruby-warrior#/">Ruby Warrior - Learn Ruby Programming with Bloc</a></p>
+
+<h2 id="rails-42-puma-ipv6-enabled-os-feel-the-pain">Rails 4.2 + Puma + IPv6 enabled OS = feel the pain</h2>
+
+<p>Since Rails 4.2, the <code>rails s</code> command no longer listens at <em>0.0.0.0</em> (means listen on all interfaces) by default, its default is now <em>localhost</em> instead.</p>
+
+<p>For IPv4 only OS <em>localhost</em> is <strong>always</strong> <em>127.0.0.1</em>. For IPv6 enabled OS <em>localhost</em> may be either <em>127.0.0.1</em> or <em>::1</em>, so everything works if client, server and domain name system agree to use the same IP protocol version.</p>
+
+<p>Rails 4.2 with Puma web server on Mac OS X listens at <em>::1</em>. For me, it breaks <em><a href="http://lvh.me">http://lvh.me</a></em> (the domain name is IPv4 only), <em><a href="http://pow.cx">http://pow.cx</a></em> (it doesn’t cover IPv6 by design), gem “em-eventsource” and even Google Chrome (try to add <code>::1 subdomain.localhost</code> to <em>/etc/hosts</em>; although it’s not a problem for Safari, you’ll fail to open <em><a href="http://subdomain.localhost:3000">http://subdomain.localhost:3000</a></em> powered by Puma).</p>
+
+<p>My Mac OS X “Network Service” name is <em>Ethernet (en0)</em>, so I turned off IPv6 support for ethernet:</p>
+
+<pre><code>networksetup -setv6off "Ethernet (en0)"
+</code></pre>
+
+<p>Your mileage may vary.</p></div></body>
 </html>
