@@ -26,7 +26,7 @@
 
 <p>Since Rails 4.2, the <code>rails s</code> command no longer listens at <em>0.0.0.0</em> (means listen on all interfaces) by default, its default is now <em>localhost</em> instead.</p>
 
-<p>For IPv4 only OS <em>localhost</em> is <strong>always</strong> <em>127.0.0.1</em>. For IPv6 enabled OS <em>localhost</em> may be either <em>127.0.0.1</em> or <em>::1</em>, so everything works if client, server and domain name system agree to use the same IP protocol version.</p>
+<p>For IPv4 only OS <em>localhost</em> is <strong>always</strong> <em>127.0.0.1</em>. For IPv6 enabled OS <em>localhost</em> may be either <em>127.0.0.1</em> or <em>::1</em>, so everything works if client, server and domain name system agree to use the same IP version.</p>
 
 <p>Rails 4.2 with Puma web server on Mac OS X listens at <em>::1</em>. For me, it breaks <em><a href="http://lvh.me">http://lvh.me</a></em> (the domain name is IPv4 only), <em><a href="http://pow.cx">http://pow.cx</a></em> (it doesn’t cover IPv6 by design), gem “em-eventsource” and even Google Chrome (try to add <code>::1 subdomain.localhost</code> to <em>/etc/hosts</em>; although it’s not a problem for Safari, you’ll fail to open <em><a href="http://subdomain.localhost:3000">http://subdomain.localhost:3000</a></em> powered by Puma).</p>
 
