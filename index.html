@@ -30,10 +30,5 @@
 
 <p>Rails 4.2 with Puma web server on Mac OS X listens at <em>::1</em>. For me, it breaks <em><a href="http://lvh.me">http://lvh.me</a></em> (the domain name is IPv4 only), <em><a href="http://pow.cx">http://pow.cx</a></em> (it doesn’t cover IPv6 by design), gem “em-eventsource” and even Google Chrome (try to add <code>::1 subdomain.localhost</code> to <em>/etc/hosts</em>; although it’s not a problem for Safari, you’ll fail to open <em><a href="http://subdomain.localhost:3000">http://subdomain.localhost:3000</a></em> powered by Puma).</p>
 
-<p>My Mac OS X “Network Service” name is <em>Ethernet (en0)</em>, so I turned off IPv6 support for ethernet:</p>
-
-<pre><code>networksetup -setv6off "Ethernet (en0)"
-</code></pre>
-
 <p>Your mileage may vary.</p></div></body>
 </html>
